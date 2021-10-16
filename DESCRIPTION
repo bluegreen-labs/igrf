@@ -1,0 +1,33 @@
+Package: igrf
+Type: Package
+Title: International Geomagnetic Reference Field
+Version: 1.0
+Authors@R: c(person(
+               family = "Hufkens",
+               given = "Koen",
+               email = "koen.hufkens@gmail.com",
+               role = c("aut", "cre"),
+               comment = c(ORCID = "0000-0002-5070-8109")),
+             person(given = "BlueGreen Labs",
+              role = c("cph", "fnd"))
+               )
+Maintainer: Koen Hufkens <koen.hufkens@gmail.com>
+Description: The 13th generation International Geomagnetic Reference Field (IGRF).
+URL: https://github.com/bluegreen-labs/igrf
+BugReports: https://github.com/bluegreen-labs/igrf/issues
+Depends:
+    R (>= 3.6)
+License: AGPL-3 + LICENSE
+LazyData: false
+ByteCompile: true
+RoxygenNote: 7.1.2
+NeedsCompilation: yes
+Suggests:
+    metR,
+    dplyr,
+    multidplyr,
+    rmarkdown,
+    covr,
+    testthat,
+    knitr
+VignetteBuilder: knitr

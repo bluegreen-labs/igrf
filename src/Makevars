@@ -1,0 +1,10 @@
+C_OBJS = igrf13c.o
+FT_OBJS = igrf13.o
+
+all:
+	@$(MAKE) $(SHLIB)
+	@rm -f *.mod *.o
+
+$(SHLIB): $(FT_OBJS) $(C_OBJS)
+
+igrf13c.o: igrf13.o

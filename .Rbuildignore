@@ -1,0 +1,10 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data$
+^data-raw$
+^analysis$
+^docs$
+^.*logo\..*$
+^.*\.ai$
+^\.github$
+^pkgdown$
