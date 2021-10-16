@@ -60,5 +60,5 @@ A resulting map can be generated from this data using contour lines from the `me
 
 ## References
 
-- International Geomagnetic Reference Field: the 13th generation Alken, P., Thebault, E., Beggan, C.D. et al. International Geomagnetic Reference Field: the thirteenth generation. Earth Planets Space 73, 49 (2021). <https://doi.org/10.1186/s40623-020-01288-x>
+- Alken, P., Thebault, E., Beggan, C.D. et al. International Geomagnetic Reference Field: the thirteenth generation. Earth Planets Space 73, 49 (2021). <https://doi.org/10.1186/s40623-020-01288-x>
 
