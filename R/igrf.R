@@ -148,5 +148,5 @@ igrf <- function(
 }
 
 .onUnload <- function(libpath) {
-  library.dynam.unload("swiftr", libpath)
+  library.dynam.unload("igrf", libpath)
 }
