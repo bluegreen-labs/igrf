@@ -58,6 +58,8 @@ grid <- igrf::igrf_grid(
 
 A resulting map can be generated from this data using contour lines from the `metR` package. The full code on how to generate the below figure is provided in the vignette.
 
+![](https://bluegreen-labs.github.io/igrf/articles/igrf_files/figure-html/unnamed-chunk-3-1.png)
+
 ## Licensing
 
 The `igrf` package is distributed under a AGPLv3 license, while the IGRF model code resides in the public domain (CC0) made available by Alken et al. (2021). I'm indebted to the the original authors for making model interoperability easy.
