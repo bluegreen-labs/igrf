@@ -24,6 +24,9 @@ RoxygenNote: 7.1.2
 NeedsCompilation: yes
 Suggests:
     metR,
+    ggplot2,
+    rnaturalearth,
+    rnaturalearthdata,
     rmarkdown,
     covr,
     testthat,

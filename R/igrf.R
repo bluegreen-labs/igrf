@@ -90,15 +90,6 @@ igrf <- function(
   # calculate colatitude
   colat <- 90 - latitude
 
-  # set field
-  if(field == "main"){
-    field <- 0
-  } else if (field == "variation") {
-    field <- 1
-  } else {
-    stop("Wrong field type (either main or variation)!")
-  }
-
   if(type == "spheroid"){
     type <- 1
   } else {
@@ -130,10 +121,10 @@ igrf <- function(
   df$H = sqrt(df$X^2 + df$Y^2)
   df$I = fact * atan2(df$Z, df$H)
 
-  if(field == 1){
+  if(field == "variation"){
     # run the model secular variation
     df_s <- .Call("c_igrf13_f",
-                  as.integer(field),
+                  as.integer(1),
                   as.double(year),
                   as.integer(type),
                   as.double(altitude),

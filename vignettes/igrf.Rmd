@@ -1,0 +1,85 @@
+---
+title: "igrf use"
+author: "Koen Hufkens"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{igrf use}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+# load the library
+library(igrf)
+library(ggplot2)
+library(metR)
+```
+
+### Single coordinates
+
+IGRF values can be calculated for a single point using the below call. This will generate a data frame with model values. The routine is relatively fast so looping over a time vector will generate time series fairly quickly. To calculate grids a simple function is provided (see below).
+
+```{r}
+df <- igrf(
+  field = "main",
+  year = 2000,
+  altitude = 2,
+  latitude = 0,
+  longitude = 0
+)
+
+print(df)
+```
+
+### Regular grid
+
+You may generate global maps of the IGRF using the `igrf_grid()` function, setting similar parameters as above while specifying a resolution as decimal degrees of the global grid. Keep in mind that values under 1 (fractions) will take an increasing amount of time and space to store the data.
+
+```{r}
+grid <- igrf::igrf_grid(
+  field = "main",
+  year = 2000,
+  altitude = 2,
+  resolution = 5
+  )
+
+print(head(grid))
+```
+
+```{r  message=FALSE, results='hide'}
+library(ggplot2)
+library(metR)
+library(rnaturalearth)
+
+coast <- ne_coastline(returnclass = "sf")
+
+ggplot(grid) +
+  geom_contour_fill(
+    aes(
+      lon,
+      lat,
+      z = D
+    ),
+    breaks = MakeBreaks(10)
+  ) +
+  geom_sf(
+    data = coast) +
+  scale_fill_divergent(
+    name = "declination"
+  ) +
+  labs(
+    x = "",
+    y = "",
+    title = "IGRF magnetic declination"
+  ) +
+  theme_bw() +
+  theme(
+    plot.background = element_rect(fill = "#ffffff", color = NA),
+    panel.background = element_rect(fill = "#ffffff", color = NA)
+  )
+```

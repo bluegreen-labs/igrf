@@ -52,7 +52,6 @@ grid <- igrf::igrf_grid(
   field = "main",
   year = 2000,
   altitude = 2,
-  isv = 1,
   resolution = 5
   )
 ```
