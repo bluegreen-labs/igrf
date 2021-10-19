@@ -14,10 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-# load the library
-library(igrf)
-library(ggplot2)
-library(metR)
+
 ```
 
 ### Single coordinates
@@ -25,6 +22,9 @@ library(metR)
 IGRF values can be calculated for a single point using the below call. This will generate a data frame with model values. The routine is relatively fast so looping over a time vector will generate time series fairly quickly. To calculate grids a simple function is provided (see below).
 
 ```{r}
+# load the library
+library(igrf)
+
 df <- igrf(
   field = "main",
   year = 2000,
