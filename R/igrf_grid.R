@@ -2,9 +2,9 @@
 #'
 #' Generates a global grid (map) of the 13th Generation International
 #' Geomagnetic Reference Field (IGRF) for a predefined spatial resolution
-#' in decimal degrees.
+#' (in decimal degrees).
 #'
-#' @param isv main field (default = 0) or secular variation (1) data output
+#' @param field main field (default = "main") or secular variation ("variation") data output
 #' @param type "spheroid" (default) or "sphere" representation
 #' @param year year A.D. Must be greater than or equal to 1900.0 and
 #'  less than or equal to 2030. Warning message is given for dates
@@ -15,22 +15,21 @@
 #'  (default = 5).
 #' @return a data frame with components X,Y,Z,F, D, H and I for the main
 #' geomagnetic field or the delta (dX etc) variants for the secular
-#' variation with:
-#' X = north component (nT) if isv = 0, nT/year if isv = 1
-#' Y = east component (nT) if isv = 0, nT/year if isv = 1
-#' Z = vertical component (nT) if isv = 0, nT/year if isv = 1
-#' F = total intensity (nT) if isv = 0, rubbish if isv = 1
-#'
-#' Reference:
-#' International Geomagnetic Reference Field: the 13th generation
-#' Alken, P., Thebault, E., Beggan, C.D. et al. International Geomagnetic
-#' Reference Field: the thirteenth generation. Earth Planets Space 73, 49 (2021).
-#' <https://doi.org/10.1186/s40623-020-01288-x>
+#' variation on a regular grid. Data is returned in a tidy format with
+#' required latitude and longitude columns for convenient plotting.
 #'
 #' @export
+#' @examples
+#' grid <- igrf::igrf_grid(
+#' year = 2000,
+#' field = "main",
+#' type = "spheroid",
+#' altitude = 2,
+#' resolution = 5
+#' )
 
 igrf_grid <- function(
-  isv = 0,
+  field = "main",
   year,
   type = "spheroid",
   altitude,
@@ -47,7 +46,7 @@ igrf_grid <- function(
   # a field map
   field <- apply(grid, 1, function(x){
     igrf::igrf(
-     isv,
+     field,
      year,
      type,
      altitude,

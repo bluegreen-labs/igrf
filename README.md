@@ -2,9 +2,9 @@
 
 [![R-CMD-check](https://github.com/bluegreen-labs/igrf/workflows/R-CMD-check/badge.svg)](https://github.com/bluegreen-labs/igrf/actions)
 
-The `igrf` package generates the 13th generation International Geomagnetic Reference Field. This is an implementation of the Fortran code provided on the NOAA website (<https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html>). The main code driving the model output is taken from the original Fortran model published by Alken et al. 2021. Outputs have been verified to correspond with the original code with the exception that values in this implementation are not rounded before output (as in the original model). For all intents and purposes the data can be considered equivalent.
+The 13th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package. The `igrf` package provides an R version of the of the original IGRF model in Fortran published by Alken et al. 2021 (available on the NOAA website <https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html>). R outputs have been verified to correspond with the original Fortran code and can be considere equivalent with the exception that values in the R are not rounded before output. For all intents and purposes the data can be considered equivalent.
 
-For full model details I refer Alken et al. 2021, and the project website where both the original code and a brief model description can be found. The authors of both the R package and the original Fortran code take no responsibility regarding the use of these data within a professional context (health risks).
+For full model details I refer to Alken et al. 2021, and the project website where both the original code and a brief model description can be found. The authors of both the R package and the original Fortran code take no responsibility regarding the use of these data within a professional context. For caveats on model use I refer to the health warning on the original project website (<https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html>).
 
 ## Installation
 
@@ -35,7 +35,7 @@ IGRF values can be calculated for a single point using the below call. This will
 
 ```r
 df <- igrf(
-  isv = 0,
+  field = "main",
   year = 2000,
   altitude = 2,
   latitude = 0,
@@ -49,6 +49,7 @@ You may generate global maps of the IGRF using the `igrf_grid()` function, setti
 
 ```r
 grid <- igrf::igrf_grid(
+  field = "main",
   year = 2000,
   altitude = 2,
   isv = 1,
@@ -57,6 +58,10 @@ grid <- igrf::igrf_grid(
 ```
 
 A resulting map can be generated from this data using contour lines from the `metR` package. The full code on how to generate the below figure is provided in the vignette.
+
+## Licensing
+
+The `igrf` package is distributed under a AGPLv3 license, while the IGRF model code resides in the public domain (CC0) made available by Alken et al. (2021). I'm indebted to the the original authors for making model interoperability easy.
 
 ## References
 

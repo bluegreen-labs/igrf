@@ -47,9 +47,7 @@
 
 
 <meta property="og:title" content="International Geomagnetic Reference Field — igrf" />
-<meta property="og:description" content="The 13th Generation International Geomagnetic Reference Field.
-This is an implementation of the Fortran code provided on
-the NOAA website &amp;lt;https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html&amp;gt;" />
+<meta property="og:description" content="The 13th Generation International Geomagnetic Reference Field." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -124,25 +122,21 @@ the NOAA website &amp;lt;https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html&amp;gt;" 
     </div>
 
     <div class="ref-description">
-    <p>The 13th Generation International Geomagnetic Reference Field.
-This is an implementation of the Fortran code provided on
-the NOAA website &lt;https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html&gt;</p>
+    <p>The 13th Generation International Geomagnetic Reference Field.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>igrf</span><span class='op'>(</span>isv <span class='op'>=</span> <span class='fl'>0</span>, <span class='va'>year</span>, type <span class='op'>=</span> <span class='st'>"spheroid"</span>, <span class='va'>altitude</span>, <span class='va'>latitude</span>, <span class='va'>longitude</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>igrf</span><span class='op'>(</span>field <span class='op'>=</span> <span class='st'>"main"</span>, <span class='va'>year</span>, type <span class='op'>=</span> <span class='st'>"spheroid"</span>, <span class='va'>altitude</span>, <span class='va'>latitude</span>, <span class='va'>longitude</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>isv</th>
-      <td><p>main field (default = 0) or secular variation (1) data output</p></td>
+      <th>field</th>
+      <td><p>main field (default = "main") or secular variation ("variation") data output</p></td>
     </tr>
     <tr>
       <th>year</th>
-      <td><p>year A.D. Must be greater than or equal to 1900.0 and
-less than or equal to 2030. Warning message is given for dates
-greater than 2025.</p></td>
+      <td><p>Decimal year between 1900 and 2030 A.D</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -150,8 +144,9 @@ greater than 2025.</p></td>
     </tr>
     <tr>
       <th>altitude</th>
-      <td><p>in km above the earth surface for a geodetic type,
-or distance from the earth center for the spherical representation.</p></td>
+      <td><p>in km above the earth surface for a spheroid type,
+or distance from the earth center (radial distance) for the sphere
+representation (in the later the value should exceed 3485km)</p></td>
     </tr>
     <tr>
       <th>latitude</th>
@@ -166,30 +161,37 @@ or distance from the earth center for the spherical representation.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a data frame with components X,Y,Z,F, D, H and I for the main
-geomagnetic field or the delta (dX etc) variants for the secular
-variation with:
-X = north component (nT) if isv = 0, nT/year if isv = 1
-Y = east component (nT) if isv = 0, nT/year if isv = 1
-Z = vertical component (nT) if isv = 0, nT/year if isv = 1
-F = total intensity (nT) if isv = 0, rubbish if isv = 1</p>
-<p>Reference:
-International Geomagnetic Reference Field: the 13th generation
-Alken, P., Thebault, E., Beggan, C.D. et al. International Geomagnetic
-Reference Field: the thirteenth generation. Earth Planets Space 73, 49 (2021).
-&lt;https://doi.org/10.1186/s40623-020-01288-x&gt;</p>
+geomagnetic field or the secular variations, i.e. instantaneous time
+rate of change of the geomagnetic main field. Keep in mind that the
+secular variations are generally only used for interpolation purposes
+and do not reflect the actual rate of change. For more guidance on the
+use of the secular variations and caveats we refer to the main project's
+website &lt;https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html&gt;.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The main code driving the model output is taken from the original Fortran
-model published by Alken et al. 2021. Outputs have been verified to
-correspond with the original code with the exception that values in this
-implementation are not rounded before output (as in the original model).
-For all intents and purposes the data can be considered equivalent.</p>
-<p>For full model details we refer Alken et al. 2021, and the project website
-where both the original code and a brief model description can be found.</p>
-<p>The authors of both the R package and the original Fortran code
+    <p>The R model underpinning the base function is the original Fortran
+model published by Alken et al. 2021 and available on the project
+website &lt;https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html&gt;.</p>
+<p>Outputs have been verified to correspond with the original code with
+the exception that values in the R implementation are not rounded before
+output (as in the original model). For all intents and purposes the data
+can be considered equivalent.</p>
+<p>For full model details I refer Alken et al. 2021, and the project website
+where both the original code and a brief model description can be found.
+The authors of both the R package and the original Fortran code
 take no responsibility regarding the use of these data within
-a professional context.</p>
+a professional context &lt;https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html&gt;.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>field</span> <span class='op'>&lt;-</span> <span class='fu'>igrf</span><span class='fu'>::</span><span class='fu'>igrf</span><span class='op'>(</span>
+ field <span class='op'>=</span> <span class='st'>"main"</span>,
+ year <span class='op'>=</span> <span class='fl'>2000</span>,
+ type <span class='op'>=</span> <span class='st'>"spheroid"</span>,
+ altitude <span class='op'>=</span> <span class='fl'>2</span>,
+ latitude <span class='op'>=</span> <span class='fl'>50</span>,
+ longitude <span class='op'>=</span> <span class='fl'>10</span>
+<span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

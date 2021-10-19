@@ -28,15 +28,14 @@ p <- ggplot(df) +
   theme_void() +
   theme_transparent()
 
-print(p)
-
 sticker(p,
         package="igrf",
-        p_size=20,
+        p_size=40,
         p_color = "black",
         h_color = "black",
         h_fill = "white",
         filename="logo.png",
         s_width = 3,
-        s_height = 3
+        s_height = 3,
+        p_y = 1.1
         )

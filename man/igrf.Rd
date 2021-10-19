@@ -4,19 +4,18 @@
 \alias{igrf}
 \title{International Geomagnetic Reference Field}
 \usage{
-igrf(isv = 0, year, type = "spheroid", altitude, latitude, longitude)
+igrf(field = "main", year, type = "spheroid", altitude, latitude, longitude)
 }
 \arguments{
-\item{isv}{main field (default = 0) or secular variation (1) data output}
+\item{field}{main field (default = "main") or secular variation ("variation") data output}
 
-\item{year}{year A.D. Must be greater than or equal to 1900.0 and
-less than or equal to 2030. Warning message is given for dates
-greater than 2025.}
+\item{year}{Decimal year between 1900 and 2030 A.D}
 
 \item{type}{"spheroid" (default) or "sphere" representation}
 
-\item{altitude}{in km above the earth surface for a geodetic type,
-or distance from the earth center for the spherical representation.}
+\item{altitude}{in km above the earth surface for a spheroid type,
+or distance from the earth center (radial distance) for the sphere
+representation (in the later the value should exceed 3485km)}
 
 \item{latitude}{latitude in decimal degrees}
 
@@ -24,35 +23,39 @@ or distance from the earth center for the spherical representation.}
 }
 \value{
 a data frame with components X,Y,Z,F, D, H and I for the main
-geomagnetic field or the delta (dX etc) variants for the secular
-variation with:
-X = north component (nT) if isv = 0, nT/year if isv = 1
-Y = east component (nT) if isv = 0, nT/year if isv = 1
-Z = vertical component (nT) if isv = 0, nT/year if isv = 1
-F = total intensity (nT) if isv = 0, rubbish if isv = 1
-
-Reference:
-International Geomagnetic Reference Field: the 13th generation
-Alken, P., Thebault, E., Beggan, C.D. et al. International Geomagnetic
-Reference Field: the thirteenth generation. Earth Planets Space 73, 49 (2021).
-<https://doi.org/10.1186/s40623-020-01288-x>
+geomagnetic field or the secular variations, i.e. instantaneous time
+rate of change of the geomagnetic main field. Keep in mind that the
+secular variations are generally only used for interpolation purposes
+and do not reflect the actual rate of change. For more guidance on the
+use of the secular variations and caveats we refer to the main project's
+website <https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html>.
 }
 \description{
 The 13th Generation International Geomagnetic Reference Field.
-This is an implementation of the Fortran code provided on
-the NOAA website <https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html>
 }
 \details{
-The main code driving the model output is taken from the original Fortran
-model published by Alken et al. 2021. Outputs have been verified to
-correspond with the original code with the exception that values in this
-implementation are not rounded before output (as in the original model).
-For all intents and purposes the data can be considered equivalent.
+The R model underpinning the base function is the original Fortran
+model published by Alken et al. 2021 and available on the project
+website <https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html>.
 
-For full model details we refer Alken et al. 2021, and the project website
+Outputs have been verified to correspond with the original code with
+the exception that values in the R implementation are not rounded before
+output (as in the original model). For all intents and purposes the data
+can be considered equivalent.
+
+For full model details I refer Alken et al. 2021, and the project website
 where both the original code and a brief model description can be found.
-
 The authors of both the R package and the original Fortran code
 take no responsibility regarding the use of these data within
-a professional context.
+a professional context <https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html>.
+}
+\examples{
+field <- igrf::igrf(
+ field = "main",
+ year = 2000,
+ type = "spheroid",
+ altitude = 2,
+ latitude = 50,
+ longitude = 10
+)
 }

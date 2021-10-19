@@ -78,8 +78,8 @@
 <a href="#international-geomagnetic-reference-field-" class="anchor"></a>International Geomagnetic Reference Field <img src="logo.png" align="right" height="138.5">
 </h1></div>
 
-<p>The <code>igrf</code> package generates the 13th generation International Geomagnetic Reference Field. This is an implementation of the Fortran code provided on the NOAA website (<a href="https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html" class="uri">https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html</a>). The main code driving the model output is taken from the original Fortran model published by Alken et al. 2021. Outputs have been verified to correspond with the original code with the exception that values in this implementation are not rounded before output (as in the original model). For all intents and purposes the data can be considered equivalent.</p>
-<p>For full model details I refer Alken et al. 2021, and the project website where both the original code and a brief model description can be found. The authors of both the R package and the original Fortran code take no responsibility regarding the use of these data within a professional context (health risks).</p>
+<p>The 13th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package. The <code>igrf</code> package provides an R version of the of the original IGRF model in Fortran published by Alken et al. 2021 (available on the NOAA website <a href="https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html" class="uri">https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html</a>). R outputs have been verified to correspond with the original Fortran code and can be considere equivalent with the exception that values in the R are not rounded before output. For all intents and purposes the data can be considered equivalent.</p>
+<p>For full model details I refer to Alken et al. 2021, and the project website where both the original code and a brief model description can be found. The authors of both the R package and the original Fortran code take no responsibility regarding the use of these data within a professional context. For caveats on model use I refer to the health warning on the original project website (<a href="https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html" class="uri">https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html</a>).</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -89,12 +89,12 @@
 <p>To install the development releases of the package run the following commands:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span><span class="op">}</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"bluegreen-labs/igrf"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"bluegreen-labs/igrf"</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/bluegreen-labs/igrf">"igrf"</a></span><span class="op">)</span></code></pre></div>
 <p>Vignettes are not rendered by default, if you want to include additional documentation please use:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span><span class="op">}</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"bluegreen-labs/igrf"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"bluegreen-labs/igrf"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/bluegreen-labs/igrf">"igrf"</a></span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -107,7 +107,7 @@
 <p>IGRF values can be calculated for a single point using the below call. This will generate a data frame with model values. The routine is relatively fast so looping over a time vector will generate time series fairly quickly. To calculate grids a simple function is provided (see below).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/igrf.html">igrf</a></span><span class="op">(</span>
-  isv <span class="op">=</span> <span class="fl">0</span>,
+  field <span class="op">=</span> <span class="st">"main"</span>,
   year <span class="op">=</span> <span class="fl">2000</span>,
   altitude <span class="op">=</span> <span class="fl">2</span>,
   latitude <span class="op">=</span> <span class="fl">0</span>,
@@ -120,6 +120,7 @@
 <p>You may generate global maps of the IGRF using the <code><a href="reference/igrf_grid.html">igrf_grid()</a></code> function, setting similar parameters as above while specifying a resolution as decimal degrees of the global grid. Keep in mind that values under 1 (fractions) will take an increasing amount of time and space to store the data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu">igrf</span><span class="fu">::</span><span class="fu"><a href="reference/igrf_grid.html">igrf_grid</a></span><span class="op">(</span>
+  field <span class="op">=</span> <span class="st">"main"</span>,
   year <span class="op">=</span> <span class="fl">2000</span>,
   altitude <span class="op">=</span> <span class="fl">2</span>,
   isv <span class="op">=</span> <span class="fl">1</span>,
@@ -127,6 +128,11 @@
   <span class="op">)</span></code></pre></div>
 <p>A resulting map can be generated from this data using contour lines from the <code>metR</code> package. The full code on how to generate the below figure is provided in the vignette.</p>
 </div>
+</div>
+<div id="licensing" class="section level2">
+<h2 class="hasAnchor">
+<a href="#licensing" class="anchor"></a>Licensing</h2>
+<p>The <code>igrf</code> package is distributed under a AGPLv3 license, while the IGRF model code resides in the public domain (CC0) made available by Alken et al. (2021). I’m indebted to the the original authors for making model interoperability easy.</p>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
@@ -152,9 +158,7 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://www.r-project.org/Licenses/AGPL-3">AGPL-3</a> + <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="https://www.r-project.org/Licenses/AGPL-3">AGPL-3</a></li>
 </ul>
 </div>
 <div class="developers">
