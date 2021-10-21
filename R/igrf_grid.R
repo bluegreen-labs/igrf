@@ -4,7 +4,8 @@
 #' Geomagnetic Reference Field (IGRF) for a predefined spatial resolution
 #' (in decimal degrees).
 #'
-#' @param field main field (default = "main") or secular variation ("variation") data output
+#' @param field main field (default = "main") or secular variation
+#'  ("variation") data output
 #' @param type "spheroid" (default) or "sphere" representation
 #' @param year year A.D. Must be greater than or equal to 1900.0 and
 #'  less than or equal to 2030. Warning message is given for dates
