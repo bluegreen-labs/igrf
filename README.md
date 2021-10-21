@@ -1,6 +1,7 @@
 # International Geomagnetic Reference Field <img src='logo.png' align="right" height="138.5" />
 
 [![R-CMD-check](https://github.com/bluegreen-labs/igrf/workflows/R-CMD-check/badge.svg)](https://github.com/bluegreen-labs/igrf/actions)
+[![codecov](https://codecov.io/gh/bluegreen-labs/igrf/branch/main/graph/badge.svg?token=ZI3BYIG3MI)](https://codecov.io/gh/bluegreen-labs/igrf)
 
 The 13th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package. The `igrf` package provides an R version of the of the original IGRF model in Fortran published by Alken et al. 2021 (available on the NOAA website <https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html>). R outputs have been verified to correspond with the original Fortran code and can be considere equivalent with the exception that values in the R are not rounded before output. For all intents and purposes the data can be considered equivalent.
 
