@@ -17,7 +17,8 @@
 #' take no responsibility regarding the use of these data within
 #' a professional context <https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html>.
 #'
-#' @param field main field (default = "main") or secular variation ("variation") data output
+#' @param field main field (default = "main") or secular variation
+#'  ("variation") data output
 #' @param type "spheroid" (default) or "sphere" representation
 #' @param year Decimal year between 1900 and 2030 A.D
 #' @param latitude latitude in decimal degrees
@@ -58,6 +59,12 @@ igrf <- function(
   # degrees-rad
   fact <- 180/3.141592654
 
+
+  # checks on year values
+  if (floor(year) < 1900 | floor(year) > 2030) {
+    stop("Dates must fall between 1900 - 2030.!")
+  }
+
   # checks on year values
   if (floor(year) > 2025) {
     warning("
@@ -65,11 +72,6 @@ igrf <- function(
     Values will be computed but may be of reduced accuracy.
     "
     )
-  }
-
-  # checks on year values
-  if (floor(year) < 1900 || floor(year) > 2030) {
-    stop("Dates must fall between 1900 - 2030.!")
   }
 
   # sanity check type
@@ -117,9 +119,9 @@ igrf <- function(
   colnames(df) <- c("X","Y","Z","F")
 
   # convert values for the main field
-  df$D = fact * atan2(df$Y, df$X)
-  df$H = sqrt(df$X^2 + df$Y^2)
-  df$I = fact * atan2(df$Z, df$H)
+  df$D <- fact * atan2(df$Y, df$X)
+  df$H <- sqrt(df$X^2 + df$Y^2)
+  df$I <- fact * atan2(df$Z, df$H)
 
   if(field == "variation"){
     # run the model secular variation
@@ -137,10 +139,10 @@ igrf <- function(
     colnames(df_s) <- c("dX","dY","dZ","dF")
 
     # convert values for the secular variations
-    df_s$dD = (60*fact*(df$X*df_s$dY - df$Y*df_s$dX))/(df$H^2)
-    df_s$dH = (df$X*df_s$dX + df$Y*df_s$dY)/df$H
-    df_s$dI = (60*fact*(df$H*df_s$dZ - df$Z*df_s$dH))/(df$F^2)
-    df_s$dF = (df$H*df_s$dH + df$Z*df_s$dZ)/df$F
+    df_s$dD <- (60*fact*(df$X*df_s$dY - df$Y*df_s$dX))/(df$H^2)
+    df_s$dH <- (df$X*df_s$dX + df$Y*df_s$dY)/df$H
+    df_s$dI <- (60*fact*(df$H*df_s$dZ - df$Z*df_s$dH))/(df$F^2)
+    df_s$dF <- (df$H*df_s$dH + df$Z*df_s$dZ)/df$F
 
     # combine main field with secular variation data
     df <- cbind(df, df_s)
