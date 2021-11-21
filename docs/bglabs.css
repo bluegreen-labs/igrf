@@ -73,8 +73,8 @@ p {
   margin-right: -100px;
   margin-left: 15px;
   height: 80px;
-  padding-bottom: 30px !important;
-  padding-top: 30px !important;
+  padding-bottom: 28px !important;
+  padding-top: 28px !important;
 }
 
 .version.label.label-default.version-default {
@@ -135,7 +135,7 @@ p {
   height: 24px;
   float: left;
   margin-top: 28px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   margin-left: 0px;
   margin-right: 20px;
 }
@@ -162,7 +162,7 @@ p {
   height: 24px;
   float: left;
   margin-top: 28px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   margin-left: 15px;
   margin-right: 10px;
   }
