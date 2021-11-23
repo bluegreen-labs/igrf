@@ -21,6 +21,5 @@
 ^.*\.Renviron$
 ^\.Rproj\.user$
 ^\.httr-oauth$
-^.*-logo\..*$
+^logo\..*$
 ^codemeta\.json$
-^logo\.*$
