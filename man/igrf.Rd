@@ -7,7 +7,8 @@
 igrf(field = "main", year, type = "spheroid", altitude, latitude, longitude)
 }
 \arguments{
-\item{field}{main field (default = "main") or secular variation ("variation") data output}
+\item{field}{main field (default = "main") or secular variation
+("variation") data output}
 
 \item{year}{Decimal year between 1900 and 2030 A.D}
 

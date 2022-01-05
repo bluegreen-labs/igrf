@@ -7,7 +7,8 @@
 igrf_grid(field = "main", year, type = "spheroid", altitude, resolution = 5)
 }
 \arguments{
-\item{field}{main field (default = "main") or secular variation ("variation") data output}
+\item{field}{main field (default = "main") or secular variation
+("variation") data output}
 
 \item{year}{year A.D. Must be greater than or equal to 1900.0 and
 less than or equal to 2030. Warning message is given for dates
