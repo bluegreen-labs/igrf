@@ -54,6 +54,7 @@ print(head(grid))
 ```{r  message=FALSE, results='hide'}
 library(ggplot2)
 library(metR)
+library(sf)
 library(rnaturalearth)
 
 coast <- ne_coastline(returnclass = "sf")
