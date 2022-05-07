@@ -16,6 +16,15 @@ For full model details I refer to Alken et al. 2021, and the project website whe
 
 ## Installation
 
+### stable release
+
+To install the current stable release use a CRAN repository:
+
+```r
+install.packages("igrf")
+library("igrf")
+```
+
 ### development release
 
 To install the development releases of the package run the following
