@@ -1,7 +1,0 @@
-pandoc: 2.14.0.3
-pkgdown: 1.6.1
-pkgdown_sha: ~
-articles:
-  igrf: igrf.html
-last_built: 2022-01-07T14:30Z
-
