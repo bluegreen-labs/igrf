@@ -25,6 +25,7 @@ RoxygenNote: 7.1.2
 NeedsCompilation: yes
 Suggests:
     metR,
+    sf,
     ggplot2,
     rnaturalearth,
     rnaturalearthdata,
