@@ -1,0 +1,13 @@
+citHeader("To cite igrf in publications use:")
+
+citEntry(entry = "Misc",
+         title = "igrf: The 13th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package",
+         author = c(as.person("Koen Hufkens")),
+         year = "2022",
+         doi = "10.5281/zenodo.6527638",
+         url = "https://bluegreen-labs.github.io/igrf/",
+         textVersion  =
+           paste("Hufkens K. (2022).",
+                 "igrf: The 13th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package",
+                 "https://doi.org/10.5281/zenodo.6527638")
+         )
