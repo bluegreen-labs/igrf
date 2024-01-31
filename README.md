@@ -12,6 +12,7 @@ For full model details I refer to Alken et al. 2021, and the project website whe
 
 ## How to cite this package in your article
 
+> [!important]
 > Koen Hufkens. (2022). bluegreen-labs/igrf: IGRF CRAN release v1.0 (v1.0). Zenodo. https://doi.org/10.5281/zenodo.6527638
 
 ## Installation
