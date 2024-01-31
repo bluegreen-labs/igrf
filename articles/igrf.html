@@ -84,7 +84,7 @@
                         <h4 data-toc-skip class="author">Koen
 Hufkens</h4>
             
-            <h4 data-toc-skip class="date">2023-09-15</h4>
+            <h4 data-toc-skip class="date">2024-01-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/bluegreen-labs/igrf/blob/HEAD/vignettes/igrf.Rmd" class="external-link"><code>vignettes/igrf.Rmd</code></a></small>
       <div class="hidden name"><code>igrf.Rmd</code></div>
@@ -143,24 +143,24 @@ amount of time and space to store the data.</p>
 <span><span class="co">#&gt; 6 -155 -90  -9900.97 13215.949 -53321.91 55820.39 126.8394 16513.34 -72.79269</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/eliocamp/metR" class="external-link">metR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://eliocamp.github.io/metR/" class="external-link">metR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rnaturalearth/" class="external-link">rnaturalearth</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_coastline.html" class="external-link">ne_coastline</a></span><span class="op">(</span>returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">grid</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/metR/man/geom_contour_fill.html" class="external-link">geom_contour_fill</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://eliocamp.github.io/metR/reference/geom_contour_fill.html" class="external-link">geom_contour_fill</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span></span>
 <span>      <span class="va">lon</span>,</span>
 <span>      <span class="va">lat</span>,</span>
 <span>      z <span class="op">=</span> <span class="va">D</span></span>
 <span>    <span class="op">)</span>,</span>
-<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/metR/man/MakeBreaks.html" class="external-link">MakeBreaks</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://eliocamp.github.io/metR/reference/MakeBreaks.html" class="external-link">MakeBreaks</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">coast</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/metR/man/scale_divergent.html" class="external-link">scale_fill_divergent</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://eliocamp.github.io/metR/reference/scale_divergent.html" class="external-link">scale_fill_divergent</a></span><span class="op">(</span></span>
 <span>    name <span class="op">=</span> <span class="st">"declination"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
