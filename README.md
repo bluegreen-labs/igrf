@@ -1,7 +1,7 @@
 # International Geomagnetic Reference Field <img src='logo.png' align="right" height="138.5" />
 
 [![R-CMD-check](https://github.com/bluegreen-labs/igrf/workflows/R-CMD-check/badge.svg)](https://github.com/bluegreen-labs/igrf/actions)
-[![codecov](https://app.codecov.io/gh/bluegreen-labs/igrf/branch/main/graph/badge.svg?token=ZI3BYIG3MI)](https://app.codecov.io/gh/bluegreen-labs/igrf)
+[![codecov](https://codecov.io/gh/bluegreen-labs/igrf/branch/main/graph/badge.svg?token=ZI3BYIG3MI)](https://app.codecov.io/gh/bluegreen-labs/igrf)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/igrf)](https://cran.r-project.org/package=igrf)
 [![](https://cranlogs.r-pkg.org/badges/igrf)](https://cran.r-project.org/package=igrf)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6527639.svg)](https://doi.org/10.5281/zenodo.6527638)
