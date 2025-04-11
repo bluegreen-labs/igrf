@@ -1,7 +1,7 @@
 Package: igrf
 Type: Package
 Title: International Geomagnetic Reference Field
-Version: 1.0
+Version: 2.0
 Authors@R: c(person(
                family = "Hufkens",
                given = "Koen",
