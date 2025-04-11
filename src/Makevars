@@ -1,5 +1,5 @@
-C_OBJS = igrf13c.o
-FT_OBJS = igrf13.o
+C_OBJS = igrf14c.o
+FT_OBJS = igrf14.o
 
 all:
 	@$(MAKE) $(SHLIB)
@@ -7,4 +7,4 @@ all:
 
 $(SHLIB): $(FT_OBJS) $(C_OBJS)
 
-igrf13c.o: igrf13.o
+igrf14c.o: igrf14.o
