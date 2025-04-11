@@ -61,8 +61,8 @@ igrf <- function(
 
 
   # checks on year values
-  if (floor(year) < 1900 | floor(year) > 2030) {
-    stop("Dates must fall between 1900 - 2030.!")
+  if (floor(year) < 1900 | floor(year) > 2035) {
+    stop("Dates must fall between 1900 - 2035.!")
   }
 
   # checks on year values
@@ -105,7 +105,7 @@ igrf <- function(
   }
 
   # run the model main field (always run)
-  df <- .Call("c_igrf13_f",
+  df <- .Call("c_igrf14_f",
               as.integer(0),
               as.double(year),
               as.integer(type),
@@ -125,7 +125,7 @@ igrf <- function(
 
   if(field == "variation"){
     # run the model secular variation
-    df_s <- .Call("c_igrf13_f",
+    df_s <- .Call("c_igrf14_f",
                   as.integer(1),
                   as.double(year),
                   as.integer(type),

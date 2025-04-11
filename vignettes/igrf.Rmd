@@ -14,7 +14,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-
 ```
 
 ### Single coordinates
@@ -54,7 +53,6 @@ print(head(grid))
 ```{r  message=FALSE, results='hide'}
 library(ggplot2)
 library(metR)
-library(sf)
 library(rnaturalearth)
 
 coast <- ne_coastline(returnclass = "sf")
@@ -69,7 +67,8 @@ ggplot(grid) +
     breaks = MakeBreaks(10)
   ) +
   geom_sf(
-    data = coast) +
+    data = coast
+  ) +
   scale_fill_divergent(
     name = "declination"
   ) +

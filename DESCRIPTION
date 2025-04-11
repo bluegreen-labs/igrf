@@ -1,7 +1,7 @@
 Package: igrf
 Type: Package
 Title: International Geomagnetic Reference Field
-Version: 1.0
+Version: 2.0
 Authors@R: c(person(
                family = "Hufkens",
                given = "Koen",
@@ -12,7 +12,7 @@ Authors@R: c(person(
               role = c("cph", "fnd"))
                )
 Maintainer: Koen Hufkens <koen.hufkens@gmail.com>
-Description: The 13th generation International Geomagnetic Reference Field (IGRF).
+Description: The 14th generation International Geomagnetic Reference Field (IGRF).
  A standard spherical harmonic representation of the Earth's main field.
 URL: https://github.com/bluegreen-labs/igrf, https://bluegreen-labs.github.io/igrf/
 BugReports: https://github.com/bluegreen-labs/igrf/issues
