@@ -19,13 +19,12 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><!-- ropensci --><link href="bglabs.css" rel="stylesheet">
 <meta property="og:title" content="International Geomagnetic Reference Field">
-<meta property="og:description" content="The 13th generation International Geomagnetic Reference Field (IGRF).
- A standard spherical harmonic representation of the Earth's main field.">
+<meta property="og:description" content="The 14th generation International Geomagnetic Reference Field (IGRF). A standard spherical harmonic representation of the Earth's main field.">
 <meta property="og:image" content="/logo.png">
 <meta name="twitter:card" content="summary">
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -46,7 +45,7 @@
         <a class="external-link hidden-md hidden-lg" href="https://bluegreenlabs.org">
           <img src="https://bluegreenlabs.org/img/logo.png" id="hexlogo" alt="bluegreen labs"></a>
         <a class="navbar-brand" href="index.html">
-           <i>igrf <small>v1.0</small></i>
+           <i>igrf <small>v2.0</small></i>
         </a>
       </div>
     </div>
@@ -65,7 +64,7 @@
         <li>
   <a href="https://github.com/bluegreen-labs/igrf/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -76,7 +75,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -84,7 +83,7 @@
 <div class="page-header"><h1 id="international-geomagnetic-reference-field-">International Geomagnetic Reference Field <img src="logo.png" align="right" height="138.5"><a class="anchor" aria-label="anchor" href="#international-geomagnetic-reference-field-"></a>
 </h1></div>
 <p><a href="https://github.com/bluegreen-labs/igrf/actions" class="external-link"><img src="https://github.com/bluegreen-labs/igrf/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <a href="https://codecov.io/gh/bluegreen-labs/igrf" class="external-link"><img src="https://codecov.io/gh/bluegreen-labs/igrf/branch/main/graph/badge.svg?token=ZI3BYIG3MI" alt="codecov"></a> <a href="https://cran.r-project.org/package=igrf" class="external-link"><img src="https://www.r-pkg.org/badges/version/igrf" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/package=igrf" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/igrf"></a> <a href="https://doi.org/10.5281/zenodo.6527638" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6527639.svg" alt="DOI"></a></p>
-<p>The 13th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package. The <code>igrf</code> package provides an R version of the of the original IGRF model in Fortran published by Alken et al. 2021 (available on the NOAA website <a href="https://www.ncei.noaa.gov/products/international-geomagnetic-reference-field" class="external-link uri">https://www.ncei.noaa.gov/products/international-geomagnetic-reference-field</a>). R outputs have been verified to correspond with the original Fortran code and can be considere equivalent with the exception that values in the R are not rounded before output. For all intents and purposes the data can be considered equivalent.</p>
+<p>The 14th Generation International Geomagnetic Reference Field (IGRF) implemented as an R package. The <code>igrf</code> package provides an R version of the of the original IGRF model in Fortran published by Alken et al. 2021 (available on the NOAA website <a href="https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html" class="external-link uri">https://www.ngdc.noaa.gov/IAGA/vmod/igrf.html</a>). R outputs have been verified to correspond with the original Fortran code and can be considere equivalent with the exception that values in the R are not rounded before output. For all intents and purposes the data can be considered equivalent.</p>
 <p>For full model details I refer to Alken et al. 2021, and the project website where both the original code and a brief model description can be found. The authors of both the R package and the original Fortran code take no responsibility regarding the use of these data within a professional context. For caveats on model use I refer to the health warning on the original project website (<a href="https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html" class="external-link uri">https://www.ngdc.noaa.gov/IAGA/vmod/igrfhw.html</a>).</p>
 <div class="section level2">
 <h2 id="how-to-cite-this-package-in-your-article">How to cite this package in your article<a class="anchor" aria-label="anchor" href="#how-to-cite-this-package-in-your-article"></a>
@@ -249,10 +248,10 @@
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
