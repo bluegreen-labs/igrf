@@ -14,7 +14,7 @@ Authors@R: c(person(
 Maintainer: Koen Hufkens <koen.hufkens@gmail.com>
 Description: The 14th generation International Geomagnetic Reference Field (IGRF).
  A standard spherical harmonic representation of the Earth's main field.
-URL: https://github.com/bluegreen-labs/igrf
+URL: https://github.com/bluegreen-labs/igrf, https://bluegreen-labs.github.io/igrf/
 BugReports: https://github.com/bluegreen-labs/igrf/issues
 Depends:
     R (>= 3.6)
@@ -25,6 +25,7 @@ RoxygenNote: 7.1.2
 NeedsCompilation: yes
 Suggests:
     metR,
+    sf,
     ggplot2,
     rnaturalearth,
     rnaturalearthdata,
