@@ -653,7 +653,7 @@ c
       p(3)  = st
       q(1)  = 0.0
       q(3)  =  ct
-      do 10 k=2,kmx
+      do 20 k=2,kmx
        if (n.ge.m) go to 4
        m     = 0
        n     = n + 1
@@ -699,6 +699,7 @@ c
        l     = l + 1
    10  m     = m + 1
    20 continue
+
 c
 c     conversion to coordinate system specified by itype
 c
