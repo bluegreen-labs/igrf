@@ -21,7 +21,7 @@ Depends:
 License: AGPL-3
 LazyData: false
 ByteCompile: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
 NeedsCompilation: yes
 Suggests:
     metR,
